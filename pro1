@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<time.h>
+double m;
+void main()
+{int flag=0;
+int s[200],n,k,c,w;
+int i,p;
+clock_t t1,t2;
+printf("Enter the size:");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{scanf("%d",&s[i]);
+}
+t1=clock();
+printf("\n1.Remove\n2.Next largest element\n");
+scanf("%d",&c);
+printf("Enter the position:");
+scanf("%d",&k);
+--k;
+if(c==1)
+{
+for(i=k;i<=n;i++)
+{s[i]=s[i+1];
+}
+printf("\nDeleted array:");
+for(i=0;i<n-1;i++)
+{printf("%d",s[i]);
+}
+}
+else if(c==2)
+{p=s[k];
+for(i=k;i<=n;i++)
+{if(s[i]>p)
+ { w=s[i];
+  flag=1;
+  break;
+ }
+}
+if(flag==1)
+{printf("Largest element is:%d",w);
+}
+else
+{printf("No largest element");
+}
+}
+t2=clock();
+m=(t2-t1)/(double)CLOCKS_PER_SEC;
+printf("\nTime:%f",m);
+}
